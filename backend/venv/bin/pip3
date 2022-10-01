@@ -1,4 +1,4 @@
-#!/Users/Jin/Desktop/Dev/GameDoc/backend/venv/bin/python3
+#!.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
