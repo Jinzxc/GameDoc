@@ -10,7 +10,7 @@ const Rewards = () => {
 
   useEffect(() => {
     updatePoints(points);
-  }, points)
+  }, [points])
 
   // hard coded items for testing before db
   const items = [

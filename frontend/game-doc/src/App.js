@@ -9,7 +9,6 @@ import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Rewards from "./components/Rewards"
 import TaskPage from "./pages/TaskPage";
-import QuestionCard from "./components/QuestionCard";
 import QuestionPage from "./pages/QuestionPage";
 
 const App = () => {
