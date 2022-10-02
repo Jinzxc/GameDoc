@@ -18,12 +18,12 @@ def create_task(task):
 
 
 @app.route("/readtask/<name>",methods=['GET']) # works
-def read_task(name):
+def read_task(id):
     ''' input(String): the name of a task
         output(JSON): the name of the task and the ids to the questions
     '''
     col = db["tasks"]
-    data = col.find_one({'name':name})
+    data = col.find_one({'id':id})
     return json.loads(json_util.dumps(data))
 
 
