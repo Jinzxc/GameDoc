@@ -1,29 +1,50 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 
 const ShopItem = (props) => {
 
     const [bought, changeBought] = useState(false);
+    const [points, changePoint] = useState(5);
 
-    const handleClick = () => {
-        changeBought(b => !b);
+    const handleBuy = () => {
+        if(props.cost > points) {
+            changeBought(false);
+            alert("Not enough points.")
+            return;
+        }
+
+        changePoint(points - props.cost);
+        changeBought(true);
+    }
+
+    const handleUse = () => {
+        if (props.type === "Color") {
+            props.setAva({...props.ava, color: props.name});
+        } else {
+            props.setAva({...props.ava, shape: props.name});
+        }
     }
 
     return (
-        <Card border="secondary" style={{ width: '18rem', margin: '5px'}}>
-            <Card.Header>{props.type}</Card.Header>
-            <Card.Body>
-                <Card.Title>{props.name}</Card.Title>
-                <Card.Text>
-                    {props.desc}
-                </Card.Text>
-                <div class="d-grid gap-2">
-                    {bought ? 
-                        <button onClick={handleClick} class="btn btn-primary">Use</button> : 
-                        <button onClick={handleClick} class="btn btn-primary">Buy</button>}
-                </div>
-            </Card.Body>
-        </Card>
+        <div>
+            <Card border="secondary" style={{ width: '18rem', margin: '5px'}}>
+                <Card.Header>{props.type}</Card.Header>
+                <Card.Body>
+                    <Card.Title>{props.name}</Card.Title>
+                    <Card.Text>
+                        {props.desc}
+                    </Card.Text>
+                    <Card.Text className="text-warning">
+                        Cost: {props.cost} points
+                    </Card.Text>
+                    <div className="d-grid gap-2">
+                        {bought ? 
+                            <button onClick={handleUse} className="btn btn-primary">Use</button> : 
+                            <button onClick={handleBuy} className="btn btn-primary">Buy</button>}
+                    </div>
+                </Card.Body>
+            </Card>
+        </div>
     );
 }
 
