@@ -49,6 +49,14 @@ def create_question(question):
 
 
 
+@app.route("/readalltasks",methods=['GET']) # ???
+def read_all_tasks():
+    col = db["tasks"]
+
+    return list(json.loads(json_util.dumps(col.find({}))))
+
+
+
 @app.route("/", methods=['GET','POST']) # test route
 def hello_world():
     ''' prints the string "Hello, World!" for testing purposes
@@ -56,3 +64,4 @@ def hello_world():
     return "Hello, World!"
 
 
+app.run()
