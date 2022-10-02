@@ -94,6 +94,34 @@ def add_score(name,value):
     return "ok"
 
 
+# name, category, description, bought (bool)
+
+@app.route("/getitem/<name>",methods=["GET"])
+def get_item(name): # names: 'yellow', 'blue', 'green', 'cube', 'sphere
+    col = db["shop_items"]
+    data = col.find_one({'name':name})
+    return json.loads(json_util.dumps(data))
+
+
+
+@app.route("/additem/<item>", methods=["GET","POST"])
+def add_item(item):
+    db["shop_items"].insert_one(json.loads(item))
+    return 'success'
+
+
+
+@app.route("/getallitems",methods=["GET"]) 
+def get_all_items():
+    col = db["shop_items"]
+
+    return list(json.loads(json_util.dumps(col.find({}))))
+
+
+
+
+
+
 
 @app.route("/", methods=['GET','POST']) # test route
 def hello_world():
