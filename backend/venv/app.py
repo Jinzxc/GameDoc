@@ -8,7 +8,7 @@ app = Flask(__name__)
 client = pymongo.MongoClient("mongodb+srv://admin:arizonagreentea@hackmit2022.je3ysni.mongodb.net/")
 db = client["HackMIT2022"]
 
-@app.route("/createtask<task>" , methods=['GET','POST']) # may work?
+@app.route("/createtask/<task>" , methods=['GET','POST']) # may work?
 def create_task(task):
     ''' input(Dict): the name(String) and an array of ids of the questions (Array of integers)
         output: None (Prefarably a status code)
