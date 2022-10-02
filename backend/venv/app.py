@@ -51,9 +51,45 @@ def create_question(question):
 
 @app.route("/readalltasks",methods=['GET']) # ???
 def read_all_tasks():
+    ''' input: None
+        output(JSON): all of the available tasks and their respective data
+    '''
     col = db["tasks"]
 
     return list(json.loads(json_util.dumps(col.find({}))))
+
+
+
+@app.route("/getuser/<name>",methods=["GET"])
+def get_user(name):
+    ''' input(String): the name of the user (currently there is only user1)
+        output(JSON): the data of the respective user (name(str) and score(int))
+    '''
+    col = db["user_data"]
+    data = col.find_one({'name':name})
+    return json.loads(json_util.dumps(data))
+
+
+
+@app.route("/getscore/<name>",methods=["GET"])
+def get_score(name):
+    ''' input(String): the name of the user (currently there is only user1)
+        output(list): a single-length list containing the score of the user(int)
+    '''
+    score = get_user(name)['score']
+    return [score]
+
+
+
+@app.route("/addscore/<name>/<value>",methods=["PATCH"])
+def add_score(name,value):
+    ''' input(name=String, value=String): the name of the user and the score to be added
+        output: None ('ok' is dispplayed if the method worked)
+    '''
+    col = db["user_data"]
+    
+    col.update_one({'name':name},{"$set":{"score": get_score(name)[0] + int(value)}},upsert=False)
+    return "ok"
 
 
 
