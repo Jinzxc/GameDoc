@@ -12,7 +12,7 @@ You will need to install `Node.js`, `npm` to manage JavaScript packages that we 
 https://nodejs.org/en/
 
 **Install node modules in package.json**  
-Make sure you are in the **`frontend` directory** before you do this.
+Make sure you are in the **`frontend/game-doc` directory** before you do this.
 ```
 npm install
 ```
