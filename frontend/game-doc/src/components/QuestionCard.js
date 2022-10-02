@@ -8,7 +8,6 @@ function QuestionCard(props) {
     const answers = props.pickedAnswers;
     const questionNumber = props.qid;
     props.pickAnswer({...answers, [questionNumber]: newAnswer});
-    console.log(props.pickedAnswers);
   }
 
   return (
