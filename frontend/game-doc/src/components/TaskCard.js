@@ -1,24 +1,29 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 
 function TaskCard({ task }) {
-  const handleClick = () => {
-    console.log("dnausidhiuas");
+  const navigate = useNavigate();
+  const handleClick = (taskId, taskIds) => {
+    navigate(`/task/${taskId}`);
   };
 
-  return (
-    <div>
-      <Card>
-        <Card.Header>{task.title}</Card.Header>
+  return(
+    <div className="d-flex flex-column 
+                    justify-content-center 
+                    align-items-center
+                    p-5">   
+    <Card style={{width: '50em'}}>
+      <Card.Header>{task.title}</Card.Header>
         <Card.Body>
-          <Card.Text>{task.description}</Card.Text>
-          <Button onClick={handleClick} variant="primary">
-            Go somewhere
-          </Button>
+            <Card.Text>{task.description}</Card.Text>
+            <Button onClick={() => handleClick(task.id, task.ids)} variant="primary">
+              Go somewhere
+            </Button>
         </Card.Body>
       </Card>
-    </div>
-  );
+      </div>
+  )
 }
 
 export default TaskCard;

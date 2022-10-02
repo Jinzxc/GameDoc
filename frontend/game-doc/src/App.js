@@ -7,24 +7,25 @@ import {
 import "./App.css";
 import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Tasks from "./components/Tasks";
 import Rewards from "./components/Rewards"
 import TaskPage from "./pages/TaskPage";
+import QuestionCard from "./components/QuestionCard";
+import QuestionPage from "./pages/QuestionPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="App">
+      <div className="App" style={{backgroundColor: 'floralwhite'}}>
+        <BrowserRouter>
         <NavigationBar />
         <div>
           <Routes>
             <Route path="/" element={<TaskPage />} />
-            <Route path="/Tasks" element={<TaskPage/>} />
             <Route path="/Rewards" element={<Rewards />} />
+            <Route path="/Questions" element={<QuestionPage ids={[0,1,2]} />} />
           </Routes>
         </div>
+        </BrowserRouter>
       </div>
-    </BrowserRouter>
   );
 };
 

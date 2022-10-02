@@ -4,16 +4,15 @@ import Card from 'react-bootstrap/Card';
 const ShopItem = (props) => {
 
     const [bought, changeBought] = useState(false);
-    const [points, changePoint] = useState(5);
 
     const handleBuy = () => {
-        if(props.cost > points) {
+        if(props.cost > props.pts) {
             changeBought(false);
             alert("Not enough points.")
             return;
         }
 
-        changePoint(points - props.cost);
+        props.setPts(props.pts - props.cost);
         changeBought(true);
     }
 
