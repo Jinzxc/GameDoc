@@ -9,6 +9,7 @@ import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Tasks from "./components/Tasks";
 import Rewards from "./components/Rewards"
+import TaskPage from "./pages/TaskPage";
 
 const App = () => {
   return (
@@ -17,8 +18,8 @@ const App = () => {
         <NavigationBar />
         <div>
           <Routes>
-            <Route path="/" element={<Tasks />} />
-            <Route path="/Tasks" element={<Tasks/>} />
+            <Route path="/" element={<TaskPage />} />
+            <Route path="/Tasks" element={<TaskPage/>} />
             <Route path="/Rewards" element={<Rewards />} />
           </Routes>
         </div>
