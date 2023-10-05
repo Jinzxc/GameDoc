@@ -32,13 +32,14 @@ npm build
 ## 1. Install Dependencies
 - Install Python
 ## 2. Setting Up the Virtual Environment
-1. Set up a new virtual environment
-For Linux/Max
-	> source venv/bin/activate
-For Windows
-    >\venv\bin\activate.bat
+1. Create virtual environment (Python3)
+ - For Linux/Mac: python3 -m venv env
+ - For Windows: py -m venv env
+3. Set up a new virtual environment
+ - For Linux/Mac: source venv/bin/activate
+ - For Windows: \venv\bin\activate.bat
 
-2. Install required libraries
+4. Install required libraries
     > pip install -r requirements.txt 
 ## 3. Running The APIs
 1. > python app.py
